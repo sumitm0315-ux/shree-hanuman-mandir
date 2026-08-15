@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Hanuman Mandir — Rani Khera</title>
+  <link rel="icon" type="image/x-icon" href="https://img.magnific.com/premium-vector/indian-hindu-temple_1157715-20244.jpg?semt=ais_hybrid&w=740&q=80">
+    
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --saffron:   #E87722;
+      --deep:      #7B1F00;
+      --gold:      #D4A017;
+      --cream:     #FDF6E3;
+      --maroon:    #6B1A1A;
+      --accent:    #FFD700;
+      --text:      #2E1A00;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── HEADER / HERO ── */
+    header {
+      position: relative;
+      background: linear-gradient(160deg, #4A0E00 0%, #8B2500 40%, #C05000 80%, #E87722 100%);
+      color: var(--cream);
+      padding: 0;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+
+    /* decorative mandala behind title */
+    header::after {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(212,160,23,0.18) 0%, transparent 70%),
+                  repeating-conic-gradient(rgba(212,160,23,0.07) 0deg 10deg, transparent 10deg 20deg);
+      border-radius: 50%;
+      animation: spin 60s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    nav {
+      position: relative; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 2.5rem;
+      border-bottom: 1px solid rgba(255,215,0,0.25);
+      backdrop-filter: blur(4px);
+    }
+    .nav-logo {
+      font-family: 'Yatra One', cursive;
+      font-size: 1.3rem;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul li a {
+      color: rgba(253,246,227,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover { color: var(--gold); }
+
+    .hero-content {
+      position: relative; z-index: 5;
+      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem 6rem;
+      animation: fadeUp 1.2s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .om-symbol {
+      font-size: 5rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 20px rgba(212,160,23,0.6));
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 10px rgba(212,160,23,0.4)); }
+      to   { filter: drop-shadow(0 0 30px rgba(212,160,23,0.9)); }
+    }
+
+    .devanagari-sub {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1.1rem;
+      color: rgba(253,246,227,0.7);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+    .hero-title {
+      font-family: 'Yatra One', cursive;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      color: #fff;
+      line-height: 1.1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+      margin-bottom: 0.4rem;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(253,246,227,0.75);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s;
+      letter-spacing: 0.5px;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--deep);
+      font-weight: 600;
+      border: none;
+      box-shadow: 0 4px 20px rgba(212,160,23,0.35);
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,160,23,0.5); }
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid rgba(253,246,227,0.5);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* wave divider */
+    .wave {
+      position: absolute; bottom: -1px; left: 0; width: 100%;
+      line-height: 0;
+    }
+    .wave svg { display: block; width: 100%; }
+
+    /* ── SECTIONS COMMON ── */
+    section { position: relative; z-index: 1; padding: 5rem 2rem; }
+    .section-label {
+      font-family: 'Yatra One', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Yatra One', cursive;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--maroon);
+      margin-bottom: 1rem;
+    }
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--saffron), var(--gold));
+      margin: 1rem 0 2rem;
+      border-radius: 2px;
+    }
+
+    /* ── TIMINGS ── */
+    #timings { background: #fff9f0; }
+    .timings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .timing-card {
+      background: var(--cream);
+      border: 1.5px solid rgba(232,119,34,0.2);
+      border-top: 4px solid var(--saffron);
+      padding: 1.8rem 1.5rem;
+      border-radius: 2px;
+      box-shadow: 0 4px 20px rgba(123,31,0,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .timing-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(123,31,0,0.12); }
+    .timing-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .timing-name {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1rem;
+      color: var(--maroon);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .timing-time {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--saffron);
+      margin-bottom: 0.2rem;
+    }
+    .timing-desc { font-size: 0.85rem; color: #7a5a3a; font-style: italic; }
+
+    /* ── EVENTS ── */
+    #events { background: linear-gradient(135deg, #FFF3E0 0%, #FDE8C8 100%); }
+    .events-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem; }
+    .event-row {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      background: #fff;
+      padding: 1.2rem 1.5rem;
+      border-left: 5px solid var(--saffron);
+      box-shadow: 0 2px 12px rgba(123,31,0,0.07);
+      transition: border-color 0.25s;
+      animation: fadeUp 0.8s ease both;
+    }
+    .event-row:hover { border-color: var(--gold); }
+    .event-date {
+      min-width: 56px; text-align: center;
+      background: var(--maroon);
+      color: #fff; padding: 0.4rem 0.3rem;
+      border-radius: 2px;
+      font-weight: 700; line-height: 1.2;
+      font-size: 0.85rem;
+    }
+    .event-date span { display: block; font-size: 1.5rem; font-family: 'Yatra One', cursive; }
+    .event-info h3 { font-family: 'Yatra One', cursive; color: var(--maroon); font-size: 1.1rem; margin-bottom: 0.2rem; }
+    .event-info p  { font-size: 0.88rem; color: #7a5a3a; }
+
+    /* ── GALLERY ── */
+    #gallery { background: #2E1A00; color: var(--cream); }
+    #gallery .section-title { color: var(--gold); }
+    #gallery .section-label { color: rgba(253,246,227,0.6); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0.6rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      overflow: hidden; position: relative;
+      border-radius: 2px;
+      background: #3d2a10;
+      min-height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      color: rgba(212,160,23,0.35);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .gallery-item:hover { transform: scale(1.03); }
+    .gallery-item:first-child { grid-column: 1 / 3; grid-row: 1; min-height: 220px; }
+    .gallery-item span { font-size: 0.85rem; font-family: 'Lora', serif; color: rgba(253,246,227,0.4); letter-spacing: 1px; margin-top: 0.5rem; }
+    .gallery-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      color: rgba(253,246,227,0.9);
+      font-size: 0.8rem; padding: 1rem 0.8rem 0.6rem;
+      font-style: italic;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: #fff9f0; }
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    @media (max-width: 640px) { .contact-wrap { grid-template-columns: 1fr; } }
+    .contact-info p { font-size: 0.95rem; color: #5a3a1a; line-height: 1.8; margin-bottom: 0.5rem; }
+    .contact-info strong { color: var(--maroon); }
+    .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.8rem 1rem;
+      border: 1.5px solid rgba(232,119,34,0.3);
+      border-radius: 2px;
+      font-family: 'Lora', serif;
+      font-size: 0.9rem;
+      background: #fffdf7;
+      color: var(--text);
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--saffron);
+    }
+    .contact-form button {
+      align-self: flex-start;
+    }
+
+   /* ── DONATION ── */
+
+    .section { 
+          padding: 60px 20px; 
+          text-align: center;
+         }
+    .contact-box { 
+          background: #fff9f0; 
+          padding: 25px; 
+          max-width: 500px; 
+          margin: auto; 
+          border-radius: 15px; 
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+          color: #222; 
+         }
+    .btn { 
+          background: #ff6b00; 
+          padding: 12px 20px; 
+          color: white; 
+          text-decoration: none; 
+          border-radius: 10px; 
+          display: inline-block; 
+          transition: 0.3s; 
+         }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep);
+      color: rgba(253,246,227,0.7);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.88rem;
+    }
+    footer .footer-om {
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-column: 1 / 3; }
+    }
+  
+/* ── LOGIN PAGE ── */
+#loginPage {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1e5db6, #6fb1ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+.login-card {
+  width: 350px;
+  max-width: 100%;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  padding: 30px;
+  text-align: center;
+}
+.login-card h2 { margin-bottom: 25px; color: #1e5db6; }
+.login-input-group { margin-bottom: 20px; text-align: left; }
+.login-input-group label { font-weight: bold; display: block; margin-bottom: 5px; }
+.login-input-group input {
+  width: 100%; padding: 10px; border-radius: 8px;
+  border: 1px solid #ccc; font-size: 14px; box-sizing: border-box;
+}
+.password-wrapper { position: relative; }
+.password-wrapper input { padding-right: 65px; }
+.toggle-btn {
+  position: absolute; right: 10px; top: 8px; cursor: pointer;
+  font-size: 14px; color: #555; user-select: none;
+}
+.login-btn {
+  width: 100%; padding: 12px; background: #1e5db6; color: white;
+  border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 10px;
+}
+.login-btn:hover { background: #144a91; }
+.extra-links { margin-top: 15px; font-size: 14px; }
+.extra-links a { text-decoration: none; color: #1e5db6; font-weight: bold; }
+.extra-links a:hover { text-decoration: underline; }
+#siteContent { display: none; }
+.logout-btn {
+  position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+  background: #1e5db6; color: #fff; border: none; border-radius: 8px;
+  padding: 10px 16px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ LOGIN PAGE ═══════════ -->
+<div id="loginPage">
+  <div class="login-card">
+    <h2>Student Login</h2>
+
+    <div class="login-input-group">
+      <label for="studentId">Student ID</label>
+      <input type="text" id="studentId" placeholder="Enter Student ID">
+    </div>
+
+    <div class="login-input-group">
+      <label for="password">Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Enter Password">
+        <span class="toggle-btn" onclick="togglePassword()">Show</span>
+      </div>
+    </div>
+
+    <button class="login-btn" onclick="login()">Login</button>
+
+    <div class="extra-links">
+      <p><a href="#" onclick="alert('Please contact the administrator to reset your password.'); return false;">Forgot Password?</a></p>
+      <p>Not registered? <a href="#" onclick="alert('Please contact the mandir/college administrator to create an account.'); return false;">Create Account</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MAIN WEBSITE ═══════════ -->
+<div id="siteContent">
+<!-- ═══════════ HEADER ═══════════ -->
+<header>
+  <nav>
+    <div class="nav-logo">🕉 Shree Hanuman Mandir</div>
+    <ul>
+      <li><a href="#timings">Timings</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="darkBtn">🌙</button>
+  </nav>
+  
+  <div class="hero-content">
+    <div class="om-symbol">ॐ</div>
+    <p class="devanagari-sub">जय श्री हनुमान</p>
+    <h1 class="hero-title">Shree Hanuman Mandir</h1>
+    <p class="hero-subtitle">shish mahal enclave , kirari , Delhi — 110086 </p>
+    <div class="hero-btns">
+      <a href="#timings" class="btn btn-primary">Darshan Timings</a>
+      <a href="#events" class="btn btn-outline">Upcoming Events</a>
+      <a href="https://whatsapp.com/channel/0029VbAuMvVDZ4LinVqvwN1q" target="_blank" class="btn btn-primary">Join WhatsApp Group</a>
+  
+    </div>
+  </div>
+
+  <div class="wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#FDF6E3">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ═══════════ TIMINGS ═══════════ -->
+<section id="timings">
+  <div style="max-width:900px;margin:0 auto;">
+    <p class="section-label reveal">Mandir Timings</p>
+    <h2 class="section-title reveal">Daily Darshan &amp; Aarti</h2>
+    <div class="divider reveal"></div>
+    <div class="timings-grid">
+      <div class="timing-card reveal">
+        <div class="timing-icon">🌅</div>
+        <div class="timing-name">Mangala Aarti</div>
+        <div class="timing-time">7:00 AM</div>
+        <div class="timing-desc">First aarti of the day — greet the deity at dawn</div>
+      </div>
+      <div class="timing-card reveal">
+        <div class="timing-icon">🌆</div>
+        <div class="timing-name">Sandhya Aarti</div>
+        <div class="timing-time">7:00 PM</div>
+        <div class="timing-desc">Evening lamps and evening prayers — all welcome</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EVENTS ═══════════ -->
+<section id="events">
+  <div style="max-width:700px;margin:0 auto;">
+    <p class="section-label reveal">Upcoming</p>
+    <h2 class="section-title reveal">Festivals &amp; Events</h2>
+    <div class="divider reveal"></div>
+    <div class="events-list">
+      <div class="event-row reveal">
+        <div class="event-date"><span>6</span>Jul</div>
+        <div class="event-info">
+          <h3>Jagannath Rath Yatra</h3>
+          <p>Grand procession from the mandir — prasad distribution for all</p>
+        </div>
+      </div>
+      <div class="event-row reveal">
+        <div class="event-date"><span>21</span>Jul</div>
+        <div class="event-info">
+          <h3>Guru Purnima Pooja</h3>
+          <p>Special abhishek &amp; pravachan by Pandit Ramacharandas Ji at 6 PM</p>
+        </div>
+      </div>
+      <div class="event-row reveal">
+        <div class="event-date"><span>16</span>Aug</div>
+        <div class="event-info">
+          <h3>Janmashtami Mahotsav</h3>
+          <p>All-night kirtan, jhanda utsav, and midnight janm celebration</p>
+        </div>
+      </div>
+      <div class="event-row reveal">
+        <div class="event-date"><span>2</span>Oct</div>
+        <div class="event-info">
+          <h3>Navratri Begins</h3>
+          <p>Nine nights of Mata ki chowki, jagratas &amp; havan — everyone invited</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALLERY ═══════════ -->
+<section id="gallery">
+  <div style="max-width:900px;margin:0 auto;">
+    <p class="section-label reveal">Photo Gallery</p>
+    <h2 class="section-title reveal">Glimpses of the Mandir</h2>
+    <div class="divider" style="background:linear-gradient(90deg,var(--saffron),var(--gold));"></div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" style="font-size:5rem;">🛕
+        <div class="gallery-label">Shardia Durga Puja</div>
+      </div>
+      <div class="gallery-item">🪔<span>Aarti</span>
+        <div class="gallery-label">Evening Aarti</div>
+      </div>
+      <div class="gallery-item">🌸<span>Flowers</span>
+        <div class="gallery-label">Daily Shringar</div>
+      </div>
+      <div class="gallery-item">🥁<span>Kirtan</span>
+        <div class="gallery-label">Satsang & Kirtan</div>
+      </div>
+      <div class="gallery-item">🎆<span>Festival</span>
+        <div class="gallery-label">Diwali Celebrations</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;color:rgba(253,246,227,0.45);font-style:italic;font-size:0.85rem;">
+      Add your own photos — WhatsApp to the mandir committee
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div style="max-width:860px;margin:0 auto;">
+    <p class="section-label reveal">Find Us</p>
+    <h2 class="section-title reveal">Contact &amp; Location</h2>
+    <div class="divider reveal"></div>
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <p><strong>Address</strong><br>Shree Hanuman Mandir,<br>Sheesh Mahal Enclave, Kirari<br>Delhi — 110086</p>
+        <br>
+        <p><strong>Pandit Ji</strong><br>Pt. Ramkumar Sharma<br>📞 +91 98100 XXXXX</p>
+        <br>
+        <p><strong>Mandir Committee</strong><br>📞 +91 9205221807<br>📧 mandirrankhera@gmail.com</p>
+        <br>
+        <p><strong>Nearest Metro</strong><br>Nangloi Metro Station (Green Line) — 10 min auto</p>
+        <br>
+        </div>
+        <br>
+
+<!--FORM-->
+
+         <form class="contact-form reveal" onsubmit="return false;">
+        <p style="font-family:'Yatra One',cursive;color:var(--maroon);font-size:1.1rem;margin-bottom:0.3rem;">Send a Message</p>
+        <input type="text"     placeholder="Your Name" />
+        <input type="tel"      placeholder="Mobile Number" />
+        <input type="text"     placeholder="Subject (e.g. Pooja Booking)" />
+        <textarea rows="4"     placeholder="Your message or query…"></textarea>
+        <button class="btn btn-primary" style="border:none;cursor:pointer;" onclick="alert('Message sent! 🙏 The mandir committee will contact you soon.')">
+          🙏 Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+        <h1 style="color:#9a6a3a;font-style:italic; text-align: center;">
+          Donations for Mandir renovation are gratefully accepted. Contact the committee after payment for receipt.
+        </h1>
+     
+      <br><br>
+
+      <!-- DONATION-->
+
+<section class="section" id="donation">
+    <h2>Online Donation</h2>
+    <div class="contact-box">
+        <h3>Support Our Mandir 🙏</h3>
+        <p>UPI ID: <b>9289196926@ibl</b></p>
+        <p>PhonePe / Google Pay / Paytm Accepted</p>
+        <br>
+        <img src="qr.jpeg" alt="Donation QR" style="border-radius:10px; width: 200px; height: 200px;">
+        <br><br>
+        <a href="upi://pay?pa=mandir@upi&pn=MandirDonation" class="btn">Donate Now</a>
+    </div>
+</section>
+
+      <br><br>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-om">ॐ</div>
+  <p>© 2025 Shree Hanuman Mandir, Sheesh Mahal Enclave, Kirari, Delhi — 110086 &nbsp;|&nbsp; All are welcome — <em>सर्वे भवन्तु सुखिनः</em></p>
+</footer>
+
+<button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<script>
+  // Login system
+  const validUsers = [
+    { id: "mahi123", password: "Admin1" },
+    { id: "admin001", password: "Admin2" },
+    { id: "student10", password: "Stud10" },
+    { id: "nxuser45", password: "NX45" },
+    { id: "sumitm04", password: "nobi0416" },
+    { id: "deepu12", password: "sose26" }
+  ];
+
+  function togglePassword() {
+    const password = document.getElementById("password");
+    const toggleBtn = document.querySelector(".toggle-btn");
+
+    if (password.type === "password") {
+      password.type = "text";
+      toggleBtn.textContent = "Hide";
+    } else {
+      password.type = "password";
+      toggleBtn.textContent = "Show";
+    }
+  }
+
+  function login() {
+    const studentId = document.getElementById("studentId").value.trim();
+    const password = document.getElementById("password").value;
+
+    const isValid = validUsers.some(
+      user => user.id === studentId && user.password === password
+    );
+
+    if (isValid) {
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("siteContent").style.display = "block";
+      window.scrollTo(0, 0);
+      alert("Login Successfully ✅");
+    } else {
+      alert("Please check ID & Password ❌");
+    }
+  }
+
+  function logout() {
+    document.getElementById("siteContent").style.display = "none";
+    document.getElementById("loginPage").style.display = "flex";
+    document.getElementById("studentId").value = "";
+    document.getElementById("password").value = "";
+    window.scrollTo(0, 0);
+  }
+
+  // Press Enter to login
+  document.getElementById("password").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") login();
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
